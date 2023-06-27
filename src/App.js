@@ -17,7 +17,7 @@ function App() {
         >
           Learn React
         </a>
-        kaka
+        
       </header>
     </div>
   );
