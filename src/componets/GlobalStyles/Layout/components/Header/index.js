@@ -10,8 +10,6 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faMessage,
-    faPaperPlane,
     faCoins,
     faUser,
     faGear,
@@ -30,7 +28,8 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/componets/AccountItem';
 import Menu from '~/componets/Popper/Menu';
-import { faEvernote } from '@fortawesome/free-brands-svg-icons';
+import { InboxIcon, MessagesIcon } from '~/componets/Icons';
+import Image from '~/componets/Image';
 
 const cx = classNames.bind(styles);
 const currentUser = true;
@@ -158,20 +157,24 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 100]} content="Upload video" placement="bottom" offset={[30, 30]}>
+                            <Button className={cx('upload-icon')} text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                                Upload
+                            </Button>
+
+                            <Tippy delay={[0, 100]} content="Messages" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                    <MessagesIcon />
                                 </button>
                             </Tippy>
-                            <Tippy delay={[0, 100]} content="message" placement="bottom">
+                            <Tippy delay={[0, 100]} content="Inbox" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
                     ) : (
                         <>
-                            <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                            <Button className={cx('upload-icon')} text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                                 Upload
                             </Button>
                             <Button primary>Log in</Button>
@@ -180,10 +183,11 @@ function Header() {
                     )}
                     <Menu item={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://p9-sign-sg.tiktokcdn.com/aweme/100x100/tiktok-obj/1620176342996994.jpeg?x-expires=1688871600&x-signature=wp3U7bntsEQAtZiQZUOHbNP1M8o%3D"
                                 alt="Nguyễn Thiện"
+                                // fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
