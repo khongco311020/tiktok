@@ -16,7 +16,9 @@ import {
 //Tippy
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
+import config from '~/config';
 import Button from '~/componets/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -26,7 +28,7 @@ import Image from '~/componets/Image';
 import Search from '../Search';
 
 const cx = classNames.bind(styles);
-const currentUser = false;
+const currentUser = true;
 // Menu phần chưa đăng nhập
 const MENU_ITEM = [
     {
@@ -109,7 +111,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 {/* logo */}
-                <img src={images.logo} alt="logo tiktok" />
+                <Link to={config.routes.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="logo tiktok" />
+                </Link>
                 {/* Search */}
                 <Search />
                 {/* action */}
@@ -144,7 +148,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p9-sign-sg.tiktokcdn.com/aweme/100x100/tiktok-obj/1620176342996994.jpeg?x-expires=1688871600&x-signature=wp3U7bntsEQAtZiQZUOHbNP1M8o%3D"
+                                src="https://images.unsplash.com/photo-1690148887417-91e785699000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
                                 alt="Nguyễn Thiện"
                                 // fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
                             />
